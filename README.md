@@ -1,1 +1,1 @@
-# AWS-instance-project
+# AWS-instance-management
