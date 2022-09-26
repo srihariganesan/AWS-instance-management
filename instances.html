@@ -4,6 +4,50 @@
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/css/style.css" rel="stylesheet">
         <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <style>
+            .frst-sec-img-div {
+                margin: 30px 0;
+            }
+            .aws-logo {
+                width: 200px;
+                border: 2px solid #FF9900;
+                border-radius: 5px;
+            }
+            .scnd-sec {
+                background-color: #232F3E;
+                color: #FFFFFF;
+                height:max-content;
+            }
+            .scnd-sec-div {
+                padding: 500px 0;
+                height:max-content;
+            }
+           
+            /*.w-text {
+                color:#FFFFFF;
+                padding-top: 10px;
+            }*/
+            .frt-tag{
+                width: 90%;
+                height: auto;
+                border: 1px solid #FF9900;
+                padding: 10px;
+                margin: 5px;
+                
+            }
+            .div-tag{
+                background-color:dimgray;
+                height:40px;
+                padding: 5px;
+            }
+            .inp-box{
+                width: 70%;
+                height:20px;
+                border: 1px solid wheat;
+
+            }
+            
+        </style>
     </head>
     <body>
         <section class="frst-sec">
@@ -116,5 +160,120 @@
                 <input type="button" class="lnch-inst-btn rounded" value="Launch Instance" />
             </div>
         </section>
-    </body>
+        <div class="launch">
+            <h1>Launch an Instance</h1>
+                <small>Amazon EC2 allows you to create virtual machines, 
+                or instances, that run on the AWS Cloud. Quickly get started by 
+                following the simple steps below.
+                </small>
+        </div><br>
+        <div class="frt-tag">
+            <div class="div-tag">
+                <h5 >Name and Tags</h5>
+            </div> &nbsp;
+            <div >
+                <h7>Name</h7>
+                <input type="text" class="inp-box" value="eg. My Web Server"> 
+            </div>
+        </div><br>
+        <div class="frt-tag">
+            <h5>Application and OS Images (Amazon Machine Image) Info</h5>
+            <small>An AMI is a template that contains the software configuration
+                 (operating system, application server, and applications) 
+                 required to launch your instance. Search or Browse for AMIs if
+                  you don’t see what you are looking for below</small>
+
+        </div><br>
+        <div class="frt-tag">
+            <div class="div-tag">
+                <h5> Instance Type</h5>
+            </div>
+            <small> Instance type</small> <br>
+            <pre>t2.micro 
+                Family:t2   1 vCPU   1GiB Memory
+                On-Demand Linux pricing:0.0124 USD per Hour
+                On-Demand Windows pricing:0.017 USD per Hour</pre>
+            <select name="instance" id="instance" style="height: 100px;">
+
+                <option value="t2.micro"><pre>t2.micro <br>
+                    Family:t2  1 vCPU   1GiB Memory
+                    On-Demand Linux pricing:0.0124 USD per Hour
+                    On-Demand Windows pricing:0.017 USD per Hour</pre></option>
+                <option value="t2.nano"><pre>t2.nano 
+                    Family:t2   1 vCPU   0.5GiB Memory
+                    On-Demand Linux pricing:0.0062 USD per Hour
+                    On-Demand Windows pricing:0.0085 USD per Hour</pre></option>
+            </select>
+        </div><br>
+        <div class="frt-tag">
+            <div class="div-tag">
+                <h5>Key pair (login)</h5>
+                <small>You can use a key pair to securely connect to your instance.
+                     Ensure that you have access to the selected key pair before 
+                     you launch the instance.
+                </small><br>
+            </div>
+                <label for="key-pair"> </label><br>
+                <label for="key-pair"> key pair name - required</label><br>
+                <select name="key-pair" id="key-pair" style="width:400px;">
+                    <option vaule="select">Select</option>
+                    <option vaule="default">Proceed without a key pair (Not recommended)</option>
+                </select>  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<em> Create new key pair</em>
+        </div><br>
+        <div>
+        <div class="frt-tag">
+            <div class="div-tag">
+                <h5>Network settings</h5>
+            </div>
+            <strong>Network</strong>
+            <div>vpc-0187dece5eb53dfd6 </div>
+            <strong>Subnet</strong>
+            <div>No preference (Default subnet in any availability zone)</div>
+            <strong>Auto-assign public IP</strong>
+            <div>Enable</div>
+                <b>Firewall(security groups)</b>
+                    <small>A security group is a set of firewall rules that control the traffic for your instance. Add rules to allow specific traffic to reach your instance.
+                     </small><br>
+                <div style="border-style: solid;border-width: 1px;">
+                    <input type="radio" id="Create security group" name="Firewall" value="Create security group">
+                    <label for="Create security group">Create Security group</label>
+                </div>
+                &nbsp;
+                <div style="border-style: solid;border-width: 1px;">
+                    <input type="radio" id="Select existing security group" name="Firewall" value="Select existing security group">
+                    <label for="Create security group">Select existing security group</label>
+                </div>
+                <div>We'll create a new security group called 'launch-wizard-1' with the following rules:
+                </div>
+                    <input type="checkbox" id="traffic" value="traffic">
+                    <label>Allow SSH traffic form</label><br>
+                    <small>Helps you connect to your instance
+                    </small><br><br>
+                    <input type="checkbox" id="traffic" value="traffic">
+                    <label>Allow HTTPs traffic form the internet</label> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <select name="traffic" id="traffic">
+                            <option value="Anywhere">Anywhere</option>
+                            <option value="Custom">Custom</option>
+                            <option value="My IP">My IP</option>
+                        </select><br>
+                    <small>To set up an endpoint, for example when creating a web server
+                    </small><br><br>
+                    <input type="checkbox" id="traffic" value="traffic">
+                    <label>Allow HTTP traffic form internet</label><br>
+                    <small>To set up an endpoint, for example when creating a web server
+                    </small><br><br>
+            </div>
+       </div>
+                
+        <!-- <div class="container">
+            <div class="scnd-sec-div row">
+
+
+
+
+            </div>
+        </div>-->
+      </div>
+    </section>
+  </body>
 </html>
